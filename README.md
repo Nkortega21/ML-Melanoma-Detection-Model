@@ -49,11 +49,11 @@ kaggle，google colab
 
 - The trained model is saved as a `.h5` file for future use or deployment.
 
-## CSS Provided
+### CSS Provided
 
 This styling provides a clean, modern look to the layout with a focus on readability and interactivity.
 
-## HTML Structure and Functionality
+### HTML Structure and Functionality
 
 #### Webpage Structure:
 
@@ -84,7 +84,7 @@ This styling provides a clean, modern look to the layout with a focus on readabi
 
  ## Answer of The Question
 
-  Our model demonstrates more than 90% meaningful predictive power in the final presentation, and successfully uploaded and displayed the prediction results on the final webpage. Theoretically, using machine learning for skin cancer prediction is feasible, and our model and results strongly support this view. However, practically speaking, whether machine learning alone can serve as a medical basis for diagnosing skin cancer is still uncertain. There is much more to be done in the field of machine learning and data analysis, and this will be our focus for future efforts.
+Our model demonstrates more than 90% meaningful predictive power in the final presentation, and successfully uploaded and displayed the prediction results on the final webpage. Theoretically, using machine learning for skin cancer prediction is feasible, and our model and results strongly support this view. However, practically speaking, whether machine learning alone can serve as a medical basis for diagnosing skin cancer is still uncertain. There is much more to be done in the field of machine learning and data analysis, and this will be our focus for future efforts.
 
 ## References for the data
 
