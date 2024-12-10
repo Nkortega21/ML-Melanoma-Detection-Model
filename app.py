@@ -1,51 +1,66 @@
-from flask import Flask, render_template, request, jsonify
-from flask_cors import CORS
-import tensorflow as tf
+from flask import Flask, request, jsonify, render_template
 from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import numpy as np
-from PIL import Image
-import io
+import os
 
+# Initialize Flask app
 app = Flask(__name__)
 
-# Enable CORS
-CORS(app)  # This will allow CORS for all routes
-
-# Load the model
+# Load the trained model
 model = load_model('melanoma_classifier.h5')
 
-# Define a route for the root URL
+# Directory to save uploaded images
+UPLOAD_FOLDER = 'uploads'
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# Home route to render the HTML page
 @app.route('/')
 def home():
     return render_template('index.html')
 
-# Define the /predict route
+# Prediction route
 @app.route('/predict', methods=['POST'])
 def predict():
+    # Check if a file was uploaded
     if 'file' not in request.files:
-        return jsonify({'error': 'No file part'})
+        return jsonify({'error': 'No file uploaded'}), 400
+
     file = request.files['file']
+
     if file.filename == '':
-        return jsonify({'error': 'No selected file'})
+        return jsonify({'error': 'No file selected'}), 400
 
-    # Preprocess the image
-    image = Image.open(file).convert('RGB').resize((224, 224))  # Adjust size to match your model's input
-    img_array = np.array(image) / 255.0  # Normalize pixel values
-    img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
+    # Save the uploaded file
+    filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+    file.save(filepath)
 
-    # Make prediction
-    prediction = model.predict(img_array)
-    is_melanoma = prediction[0][0] > 0.5  # Adjust threshold as needed
-    result = 'Melanoma' if is_melanoma else 'Not Melanoma'
-    
-    # Get the prediction probability (confidence)
-    confidence = prediction[0][0] * 100  # Convert to percentage
+    try:
+        # Preprocess the image
+        img = load_img(filepath, target_size=(224, 224))  # Resize to model's input size
+        img_array = img_to_array(img) / 255.0  # Normalize pixel values to [0, 1]
+        img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
 
-    # Return both the result and the confidence (as a percentage)
-    return jsonify({
-        'result': result,
-        'confidence': round(confidence, 2)  # Round to 2 decimal places for percentage
-    })
+        # Make prediction
+        prediction = model.predict(img_array)
+        probability = float(prediction[0][0])  # Extract probability value
+
+        # Determine benign or malignant
+        label = "Malignant" if probability > 0.5 else "Benign"
+
+        # Return prediction result and confidence percentage
+        return jsonify({
+            'result': label,
+            'confidence': f"{probability * 100:.2f}"
+        })
+
+    except Exception as e:
+        # Handle exceptions gracefully
+        return jsonify({'error': f"Error processing the image: {str(e)}"}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
+

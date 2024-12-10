@@ -4,29 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Melanoma Detection</title>
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <h1>Upload an Image to Check for Melanoma</h1>
+    <div class="container">
+        <h1>Melanoma Detection</h1>
+        <p>Upload an image of a skin lesion to determine if it is benign or malignant.</p>
 
-    <!-- Form to upload an image -->
-    <form id="uploadForm" enctype="multipart/form-data" method="POST">
-        <input type="file" name="file" id="file" accept="image/*">
-        <button type="submit">Upload Image</button>
-    </form>
+        <!-- Form to upload an image -->
+        <form id="uploadForm" enctype="multipart/form-data" method="POST">
+            <input type="file" name="file" id="file" accept="image/*">
+            <button type="submit">Upload Image</button>
+        </form>
 
-    <!-- Area to display the uploaded image -->
-    <div id="imageContainer" style="display:none;">
-        <h2>Uploaded Image:</h2>
-        <img id="uploadedImage" src="" alt="Uploaded Image" width="300">
+        <!-- Area to display the uploaded image -->
+        <div id="imageContainer">
+            <h2>Uploaded Image:</h2>
+            <img id="uploadedImage" src="" alt="Uploaded Image">
+        </div>
+
+        <!-- Display prediction result -->
+        <div class="result">
+            <h2 id="predictionResult"></h2>
+            <h3 id="confidence"></h3>
+        </div>
     </div>
 
-    <!-- Display prediction result -->
-    <h2 id="predictionResult"></h2>
-    <h3 id="confidence"></h3>
-
-    <!-- Add your JavaScript -->
     <script>
-        // Handle form submission using JavaScript (AJAX)
+        // JavaScript for handling form submission
         const form = document.getElementById('uploadForm');
         const imageContainer = document.getElementById('imageContainer');
         const uploadedImage = document.getElementById('uploadedImage');
@@ -34,7 +40,7 @@
         const confidence = document.getElementById('confidence');
 
         form.addEventListener('submit', function(event) {
-            event.preventDefault();  // Prevent the form from submitting normally
+            event.preventDefault();
 
             const formData = new FormData(form);
             fetch('/predict', {
@@ -44,21 +50,19 @@
             .then(response => response.json())
             .then(data => {
                 if (data.result) {
-                    // Show the uploaded image and result
                     uploadedImage.src = URL.createObjectURL(formData.get('file'));
-                    imageContainer.style.display = 'block'; // Make image container visible
-
-                    // Display prediction result and confidence
-                    predictionResult.innerHTML = `Prediction: ${data.result}`;
-                    confidence.innerHTML = `Confidence: ${data.confidence}%`;
+                    imageContainer.style.display = 'block';
+                    predictionResult.innerHTML = `Prediction: <strong>${data.result}</strong>`;
+                    confidence.innerHTML = `Confidence: <strong>${data.confidence}%</strong>`;
                 } else {
-                    predictionResult.innerHTML = 'Error: ' + data.error;
+                    predictionResult.innerHTML = `<span class="error">Error: ${data.error}</span>`;
                 }
             })
             .catch(error => {
-                predictionResult.innerHTML = 'Error: ' + error;
+                predictionResult.innerHTML = `<span class="error">Error: ${error.message}</span>`;
             });
         });
     </script>
 </body>
 </html>
+
