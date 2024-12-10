@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melanoma Detection</title>
+</head>
+<body>
+    <h1>Upload an Image to Check for Melanoma</h1>
+
+    <!-- Form to upload an image -->
+    <form id="uploadForm" enctype="multipart/form-data" method="POST">
+        <input type="file" name="file" id="file" accept="image/*">
+        <button type="submit">Upload Image</button>
+    </form>
+
+    <!-- Area to display the uploaded image -->
+    <div id="imageContainer" style="display:none;">
+        <h2>Uploaded Image:</h2>
+        <img id="uploadedImage" src="" alt="Uploaded Image" width="300">
+    </div>
+
+    <!-- Display prediction result -->
+    <h2 id="predictionResult"></h2>
+    <h3 id="confidence"></h3>
+
+    <!-- Add your JavaScript -->
+    <script>
+        // Handle form submission using JavaScript (AJAX)
+        const form = document.getElementById('uploadForm');
+        const imageContainer = document.getElementById('imageContainer');
+        const uploadedImage = document.getElementById('uploadedImage');
+        const predictionResult = document.getElementById('predictionResult');
+        const confidence = document.getElementById('confidence');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the form from submitting normally
+
+            const formData = new FormData(form);
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result) {
+                    // Show the uploaded image and result
+                    uploadedImage.src = URL.createObjectURL(formData.get('file'));
+                    imageContainer.style.display = 'block'; // Make image container visible
+
+                    // Display prediction result and confidence
+                    predictionResult.innerHTML = `Prediction: ${data.result}`;
+                    confidence.innerHTML = `Confidence: ${data.confidence}%`;
+                } else {
+                    predictionResult.innerHTML = 'Error: ' + data.error;
+                }
+            })
+            .catch(error => {
+                predictionResult.innerHTML = 'Error: ' + error;
+            });
+        });
+    </script>
+</body>
+</html>
