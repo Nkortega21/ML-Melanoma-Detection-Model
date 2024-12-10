@@ -9,60 +9,126 @@
 </head>
 <body>
     <div class="container">
-        <h1>Melanoma Detection</h1>
-        <p>Upload an image of a skin lesion to determine if it is benign or malignant.</p>
-
-        <!-- Form to upload an image -->
-        <form id="uploadForm" enctype="multipart/form-data" method="POST">
-            <input type="file" name="file" id="file" accept="image/*">
-            <button type="submit">Upload Image</button>
-        </form>
-
-        <!-- Area to display the uploaded image -->
-        <div id="imageContainer">
-            <h2>Uploaded Image:</h2>
-            <img id="uploadedImage" src="" alt="Uploaded Image">
+        <!-- Left Sidebar -->
+        <div class="sidebar-left">
+            <h3>Preventative Actions</h3>
+            <p>Protect your skin and reduce the risk of melanoma with these tips:</p>
+            <ul>
+                <li>Avoid prolonged sun exposure, especially during peak hours (10 AM to 4 PM).</li>
+                <li>Use sunscreen with SPF 30 or higher and reapply every two hours.</li>
+                <li>Wear protective clothing, such as wide-brimmed hats and long sleeves.</li>
+                <li>Avoid tanning beds, as they increase the risk of skin cancer.</li>
+            </ul>
         </div>
 
-        <!-- Display prediction result -->
-        <div class="result">
-            <h2 id="predictionResult"></h2>
-            <h3 id="confidence"></h3>
+        <!-- Main Content -->
+        <div class="main-content">
+            <h1>Melanoma Detection</h1>
+            <p>Upload an image of a skin lesion to determine if it is benign or malignant.</p>
+            <!-- Image Upload Form -->
+            <form id="uploadForm" enctype="multipart/form-data" method="POST">
+                <input type="file" name="file" id="file" accept="image/*">
+                <button type="submit">Upload Image</button>
+            </form>
+            <div id="imageContainer">
+                <h2>Uploaded Image:</h2>
+                <img id="uploadedImage" src="" alt="Uploaded Image">
+            </div>
+            <div class="result">
+                <h2 id="predictionResult"></h2>
+                <h3 id="confidence"></h3>
+            </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="sidebar-right">
+            <h3>Suggested Actions</h3>
+            <div id="suggestedActions">
+                <p>Please upload an image for prediction to see suggestions.</p>
+            </div>
+            <p class="disclaimer">
+                <strong>Disclaimer:</strong> This model is not 100% accurate. Regardless of the result, consult your doctor for a professional diagnosis and treatment.
+            </p>
         </div>
     </div>
 
+    <!-- Resources Section -->
+    <div class="resources">
+        <h3>Resources</h3>
+        <ul>
+            <li><a href="https://www.cancer.org/healthy/be-safe-in-sun.html" target="_blank">Preventative Actions</a></li>
+            <li><a href="https://www.skincancer.org/prevention/" target="_blank">Skin Cancer Prevention Tips</a></li>
+            <li><a href="https://www.melanoma.org/" target="_blank">Melanoma Research Foundation</a></li>
+        </ul>
+    </div>
+
     <script>
-        // JavaScript for handling form submission
         const form = document.getElementById('uploadForm');
         const imageContainer = document.getElementById('imageContainer');
         const uploadedImage = document.getElementById('uploadedImage');
         const predictionResult = document.getElementById('predictionResult');
         const confidence = document.getElementById('confidence');
+        const suggestedActions = document.getElementById('suggestedActions');
 
-        form.addEventListener('submit', function(event) {
+        form.addEventListener('submit', function (event) {
             event.preventDefault();
 
             const formData = new FormData(form);
+            const fileInput = document.getElementById('file');
+            const file = fileInput.files[0];
+
+            if (file) {
+                // Display the uploaded image preview
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    uploadedImage.src = e.target.result;
+                    imageContainer.style.display = 'block'; // Ensure the image container is visible
+                };
+                reader.readAsDataURL(file);
+            }
+
+            // Send the image to the backend for prediction
             fetch('/predict', {
                 method: 'POST',
-                body: formData
+                body: formData,
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.result) {
-                    uploadedImage.src = URL.createObjectURL(formData.get('file'));
-                    imageContainer.style.display = 'block';
-                    predictionResult.innerHTML = `Prediction: <strong>${data.result}</strong>`;
-                    confidence.innerHTML = `Confidence: <strong>${data.confidence}%</strong>`;
-                } else {
-                    predictionResult.innerHTML = `<span class="error">Error: ${data.error}</span>`;
-                }
-            })
-            .catch(error => {
-                predictionResult.innerHTML = `<span class="error">Error: ${error.message}</span>`;
-            });
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.result) {
+                        predictionResult.innerHTML = `Prediction: <strong>${data.result}</strong>`;
+                        confidence.innerHTML = `Confidence: <strong>${data.confidence}%</strong>`;
+
+                        // Update suggested actions based on prediction
+                        if (data.result === 'Malignant') {
+                            suggestedActions.innerHTML = `
+                                <p><strong>Actions:</strong></p>
+                                <ul>
+                                    <li>Consult a dermatologist immediately.</li>
+                                    <li>Avoid sun exposure and use sunscreen daily.</li>
+                                    <li>Prepare for diagnostic tests such as a biopsy.</li>
+                                </ul>
+                            `;
+                        } else {
+                            suggestedActions.innerHTML = `
+                                <p><strong>Actions:</strong></p>
+                                <ul>
+                                    <li>Monitor the lesion for changes in size, color, or shape.</li>
+                                    <li>Schedule regular skin checks with a dermatologist.</li>
+                                    <li>Use sunscreen to protect your skin.</li>
+                                </ul>
+                            `;
+                        }
+                    } else {
+                        predictionResult.innerHTML = `<span class="error">Error: ${data.error}</span>`;
+                    }
+                })
+                .catch((error) => {
+                    predictionResult.innerHTML = `<span class="error">Error: ${error.message}</span>`;
+                });
         });
     </script>
 </body>
 </html>
+
+
 

@@ -1,60 +1,53 @@
-/* General Styling */
+/* General Layout */
 body {
     font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
-    text-align: center;
 }
 
-h1, h2, h3 {
+/* Container Layout */
+.container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Left and Right Sidebars */
+.sidebar-left, .sidebar-right {
+    width: 20%;
+    padding: 15px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-left h3, .sidebar-right h3 {
     color: #4CAF50;
 }
 
-h1 {
-    margin-top: 20px;
+.sidebar-left ul, .sidebar-right ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-/* Center Content */
-.container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
+/* Main Content */
+.main-content {
+    width: 55%;
+    padding: 15px;
     background: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-/* File Upload Styling */
-form {
-    margin: 20px 0;
-}
-
-input[type="file"] {
-    display: block;
-    margin: 10px auto;
-    font-size: 16px;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
     border-radius: 5px;
-    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-button:hover {
-    background-color: #45a049;
-}
-
-/* Uploaded Image Display */
+/* Image Preview */
 #imageContainer {
-    display: none;
     margin: 20px 0;
+    display: none; /* Hide until an image is uploaded */
 }
 
 #uploadedImage {
@@ -62,15 +55,33 @@ button:hover {
     height: auto;
     border: 2px solid #ddd;
     border-radius: 5px;
+    margin-top: 15px;
 }
 
-/* Result Display */
-.result {
+/* Resources Section */
+.resources {
     margin-top: 20px;
-    font-size: 18px;
+    text-align: center;
 }
 
-.error {
-    color: red;
+.resources h3 {
+    color: #4CAF50;
 }
 
+.resources ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.resources li {
+    margin: 10px 0;
+}
+
+.resources a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.resources a:hover {
+    text-decoration: underline;
+}
