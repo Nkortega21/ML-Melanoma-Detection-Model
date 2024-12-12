@@ -2,6 +2,10 @@
 ## Table of Contents
 - [Introduction](#Introduction)
 - [Tools](#Tools)
+- [Model Quick Start Guide](#Model Quick Start Guide)
+  - [Step 1: Access the Dataset](#Step 1: Access the Dataset)
+  - [Step 2: Download the `model_file`](#Step 2: Download the `model_file`)
+  - [Step 3: Launch a Kaggle Notebook](#Step 3: Launch a Kaggle Notebook)
 - [Key Steps](#Key-Steps)
   - [Model Creation Process](#Model-Creation-Process)
     - [1. Data Preparation](#1-Data-Preparation)
