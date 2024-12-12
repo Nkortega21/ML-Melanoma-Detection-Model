@@ -97,7 +97,7 @@ This styling provides a clean, modern look to the layout with a focus on readabi
 
  ## Answer of The Question
 
-Our model demonstrates more than 90% meaningful predictive power in the final presentation, and successfully uploaded and displayed the prediction results on the final webpage. Theoretically, using machine learning for skin cancer prediction is feasible, and our model and results strongly support this view. However, from a practical perspective, whether machine learning alone can serve as a medical basis for diagnosing melanoma still requires more data development and practical validation.. There is much more to be done in the field of machine learning and data analysis, and this will be our focus for future efforts.
+Our model demonstrates more than 90% meaningful predictive power in the final presentation, and successfully uploaded and displayed the prediction results on the final webpage. Theoretically, using machine learning for skin cancer prediction is feasible, and our model and results strongly support this view. However, from a practical perspective, whether machine learning alone can serve as a medical basis for diagnosing melanoma still requires more data development and practical validation.. There is much more to be done in the field of machine learning and data analysis, and this will be our focus for future efforts.Nevertheless, the journey ahead is long and challenging, but we will persevere in our pursuit. Being able to help more people through such a convenient method is the original intention of many data analysts when they embark on their learning journey. It is also the purpose behind our choice of this topic.
 
 ## References for the data
 
