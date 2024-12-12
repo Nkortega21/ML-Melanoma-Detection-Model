@@ -1,4 +1,4 @@
-# ML-Skin-Cancer-Detection-Model
+# ML-Melanoma-Detection-Model
 ## Table of Contents
 - [Introduction](#Introduction)
 - [Tools](#Tools)
