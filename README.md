@@ -40,8 +40,7 @@ kaggle，google colab
 1. Visit the dataset's Kaggle page:  
    [Melanoma Skin Cancer Dataset of 10,000 Images](https://www.kaggle.com/datasets/hasnainjaved/melanoma-skin-cancer-dataset-of-10000-images)
 
-2. **Sign in to Kaggle** if you haven’t already.  
-   - If you don’t have an account, create one at [Kaggle](https://www.kaggle.com).
+2. **Sign in to Kaggle** 
 
 ### Step 2: Download the `model_file`
 1. Locate the `model_file` folder within the dataset page.  
@@ -49,12 +48,10 @@ kaggle，google colab
 
 ### Step 3: Launch a Kaggle Notebook
 1. On the same Kaggle page, click the **"New Notebook"** button.  
-   - This will open a new Jupyter Notebook hosted on Kaggle.
 
 2. In the new notebook, **copy and paste the code** from the `model_file` folder into a cell.
 
 3. **Run the Notebook** to execute the model code.  
-   - Kaggle’s integrated environment will handle the dependencies and access the dataset without requiring local downloads of the entire dataset.
 
 ## Key Steps
 
