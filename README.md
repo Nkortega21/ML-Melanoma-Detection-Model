@@ -21,10 +21,9 @@
 - [Declaration](#Declaration)
 
 ## Introduction
-With changes in the environment, UV radiation has become a significant cause of skin cancer. The early symptoms of skin cancer are often difficult to detect with the naked eye, leading many patients to seek medical attention only in the late stages of the disease, missing the optimal treatment window. Traditional diagnosis relies on experienced dermatologists, but their assessments can be limited by the following factors:
-
-Subjectivity: Diagnostic results can vary between doctors due to differences in experience and perspective.
-Resource Scarcity: In many remote or under-resourced areas, the number of professional dermatologists is insufficient, resulting in delayed diagnoses.
+With changes in the environment, UV radiation has become a significant cause of skin cancer. The early symptoms of skin cancer are often difficult to detect with the naked eye, leading many patients to seek medical attention only in the late stages of the disease, missing the optimal treatment window. Traditional diagnosis relies on experienced dermatologists, but their assessments can be limited by the following factors:   
+Subjectivity: Diagnostic results can vary between doctors due to differences in experience and perspective.   
+Resource Scarcity: In many remote or under-resourced areas, the number of professional dermatologists is insufficient, resulting in delayed diagnoses.   
 Meanwhile, machine learning has the potential to efficiently and accurately process large-scale data. Could it be used to improve the speed and efficiency of screening, thereby helping people with early prevention, diagnosis, and reducing unnecessary medical costs and burdens?
 
 This project aims to answer the question: **Can we use machine learning to build a model that determines the likelihood of skin cancer by uploading images of the skin?** This would help people detect skin cancer early and address the shortcomings of traditional medical resources.
