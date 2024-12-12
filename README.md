@@ -3,7 +3,7 @@
 - [Introduction](#Introduction)
 - [Tools](#Tools)
 - [Key Steps](#Key-Steps)
-  - [Model Creation Process](#Model-Creation-Process)
+- [Model Creation Process](#Model-Creation-Process)
     - [1. Data Preparation](#1-Data-Preparation)
     - [2. Model Architecture](#2-Model-Architecture)
     - [3. Model Compilation](#3-Model-Compilation)
