@@ -113,9 +113,20 @@ This styling provides a clean, modern look to the layout with a focus on readabi
 
 - Displays prediction and confidence percentage.
 
-- Suggested actions are updated:
-  - **Malignant**: Consult a dermatologist and take preventive actions.
-  - **Benign**: Monitor the lesion and schedule regular skin checks.
+### Suggested Actions Based on the Result of the Uploaded Image:
+
+#### **Malignant**:
+- Consult a dermatologist immediately.  
+- Avoid sun exposure and use sunscreen daily.  
+- Prepare for diagnostic tests such as a biopsy.  
+- Explore treatment options, including surgery, radiation, and immunotherapy.  
+- Join a support group for melanoma patients and caregivers.  
+
+#### **Benign**:
+- Monitor the lesion for changes in size, color, or shape.  
+- Schedule regular skin checks with a dermatologist.  
+- Use sunscreen to protect your skin. 
+
 
  ## Answer of The Question
 
