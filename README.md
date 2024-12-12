@@ -21,12 +21,12 @@
 - [Declaration](#Declaration)
 
 ## Introduction
-With changes in the environment, UV radiation has become a significant cause of skin cancer. The early symptoms of skin cancer are often difficult to detect with the naked eye, leading many patients to seek medical attention only in the late stages of the disease, missing the optimal treatment window. Traditional diagnosis relies on experienced dermatologists, but their assessments can be limited by the following factors:   
+Melanoma is a highly aggressive type of skin cancer characterized by rapid growth and early potential to spread to lymph nodes and distant organs. The primary risk factor is excessive exposure to ultraviolet (UV) radiation, particularly from intermittent intense sun exposure or frequent use of tanning beds. Patients typically present with skin lesions that are asymmetrical, have irregular borders, show color variations, or are larger than 6 millimeters in diameter. Additionally, existing moles that exhibit rapid changes can also be indicative of melanoma. The early symptoms of melanoma are often difficult to detect with the naked eye, leading many patients to seek medical attention only in the late stages of the disease, missing the optimal treatment window. Traditional diagnosis relies on experienced dermatologists, but their assessments can be limited by the following factors:   
 Subjectivity: Diagnostic results can vary between doctors due to differences in experience and perspective.   
 Resource Scarcity: In many remote or under-resourced areas, the number of professional dermatologists is insufficient, resulting in delayed diagnoses.   
 Meanwhile, machine learning has the potential to efficiently and accurately process large-scale data. Could it be used to improve the speed and efficiency of screening, thereby helping people with early prevention, diagnosis, and reducing unnecessary medical costs and burdens?
 
-This project aims to answer the question: **Can we use machine learning to build a model that determines the likelihood of skin cancer by uploading images of the skin?** This would help people detect skin cancer early and address the shortcomings of traditional medical resources.
+This project aims to answer the question: **Can we use machine learning to build a model that determines the likelihood of melanoma by uploading images of the skin?** This would help people detect skin cancer early and address the shortcomings of traditional medical resources.
 
 ## Tools
 kaggle，google colab
@@ -97,7 +97,7 @@ This styling provides a clean, modern look to the layout with a focus on readabi
 
  ## Answer of The Question
 
-Our model demonstrates more than 90% meaningful predictive power in the final presentation, and successfully uploaded and displayed the prediction results on the final webpage. Theoretically, using machine learning for skin cancer prediction is feasible, and our model and results strongly support this view. However, practically speaking, whether machine learning alone can serve as a medical basis for diagnosing skin cancer is still uncertain. There is much more to be done in the field of machine learning and data analysis, and this will be our focus for future efforts.
+Our model demonstrates more than 90% meaningful predictive power in the final presentation, and successfully uploaded and displayed the prediction results on the final webpage. Theoretically, using machine learning for skin cancer prediction is feasible, and our model and results strongly support this view. However, from a practical perspective, whether machine learning alone can serve as a medical basis for diagnosing melanoma still requires more data development and practical validation.. There is much more to be done in the field of machine learning and data analysis, and this will be our focus for future efforts.
 
 ## References for the data
 
