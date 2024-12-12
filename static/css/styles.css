@@ -1,4 +1,4 @@
-/* General Layout */
+/* General Styling */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f9f9f9;
@@ -6,21 +6,33 @@ body {
     padding: 0;
 }
 
-/* Container Layout */
+/* Header Styling */
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.subtitle {
+    margin: 10px 0 0;
+    font-size: 18px;
+}
+
+/* Container */
 .container {
     display: flex;
-    flex-wrap: nowrap;
     justify-content: space-between;
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
 }
 
-/* Left and Right Sidebars */
+/* Sidebars */
 .sidebar-left, .sidebar-right {
     width: 20%;
     padding: 15px;
-    background: #f0f0f0;
+    background-color: #f0f0f0;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
@@ -30,58 +42,39 @@ body {
 }
 
 .sidebar-left ul, .sidebar-right ul {
-    list-style-type: none;
+    list-style-type: disc; /* Adds bullet points */
     padding: 0;
+    margin: 0; /* Removes default margins for the list */
+}
+
+.sidebar-left li, .sidebar-right li {
+    margin-bottom: 10px; /* Adds spacing between list items */
 }
 
 /* Main Content */
 .main-content {
     width: 55%;
-    padding: 15px;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    padding: 15px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Image Preview */
-#imageContainer {
-    margin: 20px 0;
-    display: none; /* Hide until an image is uploaded */
-}
-
-#uploadedImage {
+#imageContainer img {
     max-width: 100%;
-    height: auto;
     border: 2px solid #ddd;
     border-radius: 5px;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
-/* Resources Section */
+/* Resources */
 .resources {
-    margin-top: 20px;
     text-align: center;
-}
-
-.resources h3 {
-    color: #4CAF50;
+    margin: 20px auto;
 }
 
 .resources ul {
     list-style-type: none;
     padding: 0;
-}
-
-.resources li {
-    margin: 10px 0;
-}
-
-.resources a {
-    color: #4CAF50;
-    text-decoration: none;
-}
-
-.resources a:hover {
-    text-decoration: underline;
 }

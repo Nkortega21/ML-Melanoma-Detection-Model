@@ -8,11 +8,16 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+    <header class="header">
+        <h1>Melanoma Detection</h1>
+        <p class="subtitle">Upload an image of a skin lesion to determine if it is benign or malignant.</p>
+    </header>
+
     <div class="container">
         <!-- Left Sidebar -->
         <div class="sidebar-left">
             <h3>Preventative Actions</h3>
-            <p>Protect your skin and reduce the risk of melanoma with these tips:</p>
+            <p><strong>Protect your skin and reduce the risk of melanoma with these tips:</strong></p>
             <ul>
                 <li>Avoid prolonged sun exposure, especially during peak hours (10 AM to 4 PM).</li>
                 <li>Use sunscreen with SPF 30 or higher and reapply every two hours.</li>
@@ -23,14 +28,11 @@
 
         <!-- Main Content -->
         <div class="main-content">
-            <h1>Melanoma Detection</h1>
-            <p>Upload an image of a skin lesion to determine if it is benign or malignant.</p>
-            <!-- Image Upload Form -->
             <form id="uploadForm" enctype="multipart/form-data" method="POST">
                 <input type="file" name="file" id="file" accept="image/*">
                 <button type="submit">Upload Image</button>
             </form>
-            <div id="imageContainer">
+            <div id="imageContainer" style="display:none;">
                 <h2>Uploaded Image:</h2>
                 <img id="uploadedImage" src="" alt="Uploaded Image">
             </div>
@@ -52,7 +54,6 @@
         </div>
     </div>
 
-    <!-- Resources Section -->
     <div class="resources">
         <h3>Resources</h3>
         <ul>
@@ -61,7 +62,6 @@
             <li><a href="https://www.melanoma.org/" target="_blank">Melanoma Research Foundation</a></li>
         </ul>
     </div>
-
     <script>
         const form = document.getElementById('uploadForm');
         const imageContainer = document.getElementById('imageContainer');
@@ -78,16 +78,14 @@
             const file = fileInput.files[0];
 
             if (file) {
-                // Display the uploaded image preview
                 const reader = new FileReader();
                 reader.onload = function (e) {
                     uploadedImage.src = e.target.result;
-                    imageContainer.style.display = 'block'; // Ensure the image container is visible
+                    imageContainer.style.display = 'block';
                 };
                 reader.readAsDataURL(file);
             }
 
-            // Send the image to the backend for prediction
             fetch('/predict', {
                 method: 'POST',
                 body: formData,
@@ -98,7 +96,6 @@
                         predictionResult.innerHTML = `Prediction: <strong>${data.result}</strong>`;
                         confidence.innerHTML = `Confidence: <strong>${data.confidence}%</strong>`;
 
-                        // Update suggested actions based on prediction
                         if (data.result === 'Malignant') {
                             suggestedActions.innerHTML = `
                                 <p><strong>Actions:</strong></p>
@@ -106,6 +103,8 @@
                                     <li>Consult a dermatologist immediately.</li>
                                     <li>Avoid sun exposure and use sunscreen daily.</li>
                                     <li>Prepare for diagnostic tests such as a biopsy.</li>
+                                    <li>Explore treatment options, including surgery, radiation, and immunotherapy.</li>
+                                    <li>Join a support group for melanoma patients and caregivers.</li>
                                 </ul>
                             `;
                         } else {
@@ -129,6 +128,3 @@
     </script>
 </body>
 </html>
-
-
-
