@@ -1,7 +1,7 @@
 # ML-Melanoma-Detection-Model
 ## Table of Contents
 - [Introduction](#Introduction)
-- [Statistics & Research](#Statistics&Research).
+- [Statistics & Research](#Statistics-&-Research)
 - [Tools](#Tools)
 - [Model Quick Start Guide](#model-quick-start-guide)
   - [Step 1: Access the Dataset](#step-1-access-the-dataset)
