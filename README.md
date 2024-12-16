@@ -1,6 +1,7 @@
 # ML-Melanoma-Detection-Model
 ## Table of Contents
 - [Introduction](#Introduction)
+- [Statistics & Research](#Statistics&Research).
 - [Tools](#Tools)
 - [Model Quick Start Guide](#model-quick-start-guide)
   - [Step 1: Access the Dataset](#step-1-access-the-dataset)
@@ -31,6 +32,11 @@ Resource Scarcity: In many remote or under-resourced areas, the number of profes
 Meanwhile, machine learning has the potential to efficiently and accurately process large-scale data. Could it be used to improve the speed and efficiency of screening, thereby helping people with early prevention, diagnosis, and reducing unnecessary medical costs and burdens?
 
 This project aims to answer the question: **Can we use machine learning to build a model that determines the likelihood of melanoma by uploading images of the skin?** This would help people detect skin cancer early and address the shortcomings of traditional medical resources.
+
+## Statistics & Research
+In doing some initial exploration we wanted to get a better understanding of the acquisition, retention, and death rates that are specifically associated with melanoma and how that is changing over time. Coming across the National Cancer Insitute website (https://seer.cancer.gov/statfacts/html/melan.html) we discovered a relational database outlining the questions we were trying to answer. This table outlines the two main databases associated with skin cancer, especially melanoma, Seer 8 and Seer 12. These databased present the number of individuals who contract melanoma, out of 100,000, and how many of those subsuquent individuals die due to complications associated with melanoma. 
+
+To present this data in ways in which we are familiar, we used beautiful soup to scrape the table from the website, along with pandas and matplotlib to manipulate the data frame and graphically illustrate pertinent relationships present in the data. With a little help from Excel, we were able to incorporate many different units taught throughout the course, along with some Tableau visuals, in order to help illustrate why we asked the question we did and why something may need to be done to counteract this growing problem. 
 
 ## Tools
 kaggle，google colab
